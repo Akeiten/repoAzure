@@ -19,10 +19,14 @@
 <h1>Register here!</h1>
 <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
 <form method="post" action="index.php" enctype="multipart/form-data" >
-      Name  <input type="text" name="name" id="name"/></br>
-      Email <input type="text" name="email" id="email"/></br>
+      	Name  <input type="text" name="name" id="name"/></br>
+      	Email <input type="text" name="email" id="email"/></br>
+	Company_Name  <input type="text" name="companyName" id="companyName"/></br>
       <input type="submit" name="submit" value="Submit" />
 </form>
+
+<a href="search">Click Here To Search!</a>	
+
 <?php
     // DB connection info
     //TODO: Update the values for $host, $user, $pwd, and $db
@@ -45,14 +49,16 @@
     try {
         $name = $_POST['name'];
         $email = $_POST['email'];
+	$companyName = $_POST['companyName'];
         $date = date("Y-m-d");
         // Insert data
-        $sql_insert = "INSERT INTO registration_tbl (name, email, date) 
-                   VALUES (?,?,?)";
+        $sql_insert = "INSERT INTO registration_tbl (name, company, email, date) 
+                   VALUES (?,?,?,?)";
         $stmt = $conn->prepare($sql_insert);
         $stmt->bindValue(1, $name);
-        $stmt->bindValue(2, $email);
-        $stmt->bindValue(3, $date);
+	$stmt->bindValue(2, $companyName);
+        $stmt->bindValue(3, $email);
+        $stmt->bindValue(4, $date);
         $stmt->execute();
     }
     catch(Exception $e) {
@@ -68,10 +74,12 @@
         echo "<h2>People who are registered:</h2>";
         echo "<table>";
         echo "<tr><th>Name</th>";
+	echo "<th>Company_Name</th>";
         echo "<th>Email</th>";
         echo "<th>Date</th></tr>";
         foreach($registrants as $registrant) {
             echo "<tr><td>".$registrant['name']."</td>";
+		echo "<td>".$registrant['company']."</td>";
             echo "<td>".$registrant['email']."</td>";
             echo "<td>".$registrant['date']."</td></tr>";
         }
