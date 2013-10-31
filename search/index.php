@@ -19,7 +19,6 @@
 
  <body>
   <h1>Database Search!</h1>
-  <h3>Use the search box with the radio button to view data in the database.</h3>
    <form method="post" action="index.php" enctype="multipart/form-data" >
       Search Box:</br>
       <input type="text" name="search" id="search"/></br></br>
