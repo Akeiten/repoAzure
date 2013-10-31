@@ -19,7 +19,6 @@
 
  <body>
   <h1>Database Search!</h1>
-  <h3>Use the search box with the radio button to view data in the database.</h3>
    <form method="post" action="index.php" enctype="multipart/form-data" >
       Search Box:</br>
       <input type="text" name="search" id="search"/></br></br>
@@ -35,7 +34,6 @@
 
 
         if ($search) {
-
          // Connect to database.
          $host = "eu-cdbr-azure-west-b.cloudapp.net";
          $user = "bfff0fde04a6ca";
@@ -77,7 +75,6 @@
          echo "<h3>Value does not exist in the database.</h3>";
          }
 
-         }
         } else {
          echo "Please type in a value in the Search Box.";
         }

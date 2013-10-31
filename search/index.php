@@ -19,6 +19,7 @@
 
  <body>
   <h1>Database Search!</h1>
+	<h3>Type in name to search for in the search box</h3>
    <form method="post" action="index.php" enctype="multipart/form-data" >
       Search Box:</br>
       <input type="text" name="search" id="search"/></br></br>
