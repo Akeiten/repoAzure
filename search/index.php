@@ -52,7 +52,7 @@
 
          $column_name = "name";
 
-         $sql_stmt = "SELECT * FROM registration_tbl WHERE $column_name='$search'";
+         $sql_stmt = "SELECT * FROM registration_tbl WHERE $column_name LIKE '%$search%'";
 
 
          //Retrieve data
