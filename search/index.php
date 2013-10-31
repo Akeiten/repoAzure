@@ -52,11 +52,14 @@
 
          $column_name = "name";
 
-         $sql_stmt = "SELECT * FROM registration_tbl WHERE $column_name LIKE '%$search%'";
+         $sql_stmt = "SELECT * FROM registration_tbl WHERE $column_name LIKE ('%', ? ,'%');
+
+	
 
 
          //Retrieve data
-         $stmt = $conn->query($sql_stmt);
+         $stmt = $conn->prepare($sql_stmt);
+	 $stmt->bindValue(1, $search);
          $registrants = $stmt->fetchAll();
          if(count($registrants) > 0) {
          echo "<h2>Data Found:</h2>";
